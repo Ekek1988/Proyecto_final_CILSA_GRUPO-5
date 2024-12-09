@@ -1,0 +1,203 @@
+/* Resetear márgenes y rellenos del body */
+body, html {
+  margin-top: 100;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+
+/* Estilo para el contenedor de las columnas */
+.container {
+  width: 100%;
+  max-width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+}
+  
+
+/* Botón flotante */
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* Estilo para el contenedor de las columnas */
+.row {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las columnas se apilen en pantallas pequeñas */
+  gap: 10px;  /* Espacio entre las columnas */
+}
+
+/* Estilo de las columnas */
+.task-column {
+  flex: 1 1 22%; /* Ajustamos las columnas a un 22% para que ocupen bien el espacio */
+  min-width: 280px; /* Añadir un ancho mínimo para evitar que se aplasten en pantallas pequeñas */
+  min-height: 500px; /* Asegura que las columnas tengan una altura mínima */
+  padding: 10px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* Colores específicos para las columnas */
+#tasks-pending {
+    background-color: #dcdbe3; /* Sin hacer */
+}
+
+#tasks-in-progress {
+    background-color: #ffcf70; /* En proceso */
+}
+
+#tasks-completed {
+    background-color: #325d32; /* Realizadas */
+}
+
+#tasks-archived {
+    background-color: #99240A; /* Dada de baja */
+}
+
+/* Títulos de las columnas */
+.column-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin-bottom: 10px;
+    border-radius: 8px;
+    text-decoration: underline;
+}
+
+/* Tarjeta de tarea */
+.task-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: grab;
+    transition: background-color 0.3s ease-in-out; /* Transición suave */
+}
+
+/* Categoría de la tarea */
+.task-category {
+    font-size: 14px;
+    font-style: italic;
+    color: #6c757d;
+}
+
+/* Estilo al arrastrar */
+.dragging {
+    opacity: 0.5;
+}
+
+/* Asegura que las columnas se apilen en pantallas pequeñas */
+@media (max-width: 992px) {
+  .task-column {
+    flex: 1 1 100%; /* En pantallas pequeñas, las columnas ocupan todo el ancho */
+    margin-bottom: 15px; /* Espacio entre las columnas apiladas */
+  }
+}
+
+
+
+/* Navbar para pantallas pequeñas */
+@media (max-width: 991px) {
+  .navbar {
+    padding: 5px 15px;
+  }
+  
+  .navbar .form-control {
+    margin-right: 10px;
+  }
+
+  .navbar .dropdown-toggle {
+    padding: 0.5rem 1rem;
+  }
+
+  .dropdown-menu {
+    min-width: 150px;
+  }
+
+  .navbar .dropdown {
+    margin-left: 10px;
+  }
+}
+
+/* Navbar para pantallas grandes */
+@media (min-width: 992px) {
+  .navbar {
+    display: block;
+  }
+  .d-md-none {
+    display: none;
+  }
+}
+
+/* Ajustes generales */
+.navbar {
+  z-index: 9999;
+  position: sticky;
+  top: 0;
+}
+
+
+
+/* Asegura que el modal se muestre encima del navbar */
+.modal {
+    z-index: 1050 !important;
+}
+
+/* Ajusta el z-index del navbar si es necesario */
+.navbar {
+    z-index: 1040; /* Aseguramos que quede debajo del modal */
+}
+
+.modal-backdrop {
+    z-index: 1040 !important; /* Fondo oscuro detrás del modal */
+}
+
+/* Contenedor de los botones en las tarjetas */
+.card-buttons {
+  position: absolute; /* Para que se posicione dentro de la tarjeta */
+  top: 5px;
+  right: 5px;
+  display: flex;
+  gap: 5px; /* Espacio entre los botones */
+}
+
+/* Botones pequeños en las tarjetas */
+.card-buttons button {
+  background-color: transparent; /* Fondo transparente */
+  border: none;
+  font-size: 16px; /* Ajusta el tamaño del texto */
+  cursor: pointer;
+  color: #555; /* Color del icono */
+  padding: 2px; /* Espacio interno reducido */
+  border-radius: 50%; /* Redondeado */
+  transition: color 0.2s;
+}
+
+.card-buttons button:hover {
+  color: #ff0000; /* Cambia el color al pasar el cursor */
+}
+
+/* Asegura que las tarjetas sean relativas para el posicionamiento */
+.task-card {
+  position: relative;
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: grab;
+  transition: background-color 0.3s ease-in-out; /* Transición suave */
+}
